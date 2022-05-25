@@ -54,7 +54,7 @@
 						<li class="nav-item"><input type="text" name="name"
 							placeholder="search employee name" id="name"> <input
 							type="submit" name="submit" value="Search"></li>
-						<li class="nav-item"><a href="/springmvcrud/logout" class="nav-link"
+						<li class="nav-item"><a href="/springmvccrud/logout" class="nav-link"
 							align="right">Logout</a></li>
 
 					</ul>

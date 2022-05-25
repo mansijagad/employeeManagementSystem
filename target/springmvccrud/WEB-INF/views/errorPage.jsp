@@ -10,7 +10,7 @@
 <body>
 <centre>
 <h1> Error</h1> 
-<h2> <%= exception.getMessage() %></h2>
+<h2> Something went wrong..Please try again with right information</h2>
 </body>
 <%@ include file ="footer.jsp" %>
 </html>

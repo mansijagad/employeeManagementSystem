@@ -22,7 +22,7 @@
         Please enter your login email, we'll send a new random password to your inbox:
         </p>
          
-        <form action="ResetPasswordServlet" method="post">
+        <form action="reset-password-response" method="post">
             <table>
                 <tr>
                     <td>Email:</td>

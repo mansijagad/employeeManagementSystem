@@ -90,7 +90,7 @@ a {
 <div class="container">
 	<div class="form-wrap">
 		<h1 class="page-title">Login Page</h1>
-		<form action="validateUser/{}" method="post" class="form">
+		<form action="validateUser" method="post" class="form">
 			<div class="form-group">
 				<label for="username">Username</label> 
 				<input type="text" placeholder="Enter Email" name="email" required>

@@ -9,8 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
 
-
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Employee")
@@ -22,16 +26,22 @@ public class Employee {
 	@Column(name = "emp_id")
 	private int empId;
 	
-	@Column(name = "first_name")	
+	
+	@Column(name = "first_name")
+	@Min(value = 2,message = "must have 2 characters")
+	@Max(value = 10, message = "must have less than 10 characters")
 	private String firstName;
 	
 	@Column(name = "last_name")
+	@NotEmpty(message = "Enter your name.")
 	private String lastName;
 	
 	@Column(name = "mob_no")
+	@Digits(message="Number should contain 10 digits.", fraction = 0, integer = 10)
 	private String mobNo;
 	
 //	@Temporal(TemporalType.DATE)
+	@Past(message = "Enter valid date.")
 	private Date dob;
 	
 	private String hobbies;
@@ -40,7 +50,6 @@ public class Employee {
 	
 	@Column(unique = true)
 	private String email;
-	
 	
 	private String password;
 	

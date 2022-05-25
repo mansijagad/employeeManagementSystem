@@ -63,14 +63,12 @@ img {
 		response.sendRedirect("index.jsp");
 	}
 	%> --%>
-	<form action="HomePageServlet" method="post,get">
+	<form action="profilePage" method="post">
 		<ul>
 
-			<li style="float: left"><a href="HomePageServlet">Profile </a></li>
-
-			<li><a href="EmployeeProjectServlet">Project</a></li>
+			<li style="float: left"><a href="profilePage">Profile </a></li>
 			
-			<li style="float: right"><a class="active" href="LogoutServlet">Logout</a>
+			<li style="float: right"><a class="active" href="logout">Logout</a>
 		</li>
 			
 		</ul>

@@ -2,6 +2,11 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -68,7 +73,7 @@ a {
 </style>
 </head>
 <body>
-
+ <h1 th:text="${message}" style="text-align: center; padding-top: 40px"></h1>
 <form action="addEmployee" method="post">
   <div class="container">
     <h1>Register</h1>
@@ -76,13 +81,16 @@ a {
     <hr>
 
     <label for="first-name"><b>First Name</b></label>
-    <input type="text" placeholder="Enter First Name" name="firstName" id="firstName" required>
+    <input type="text" placeholder="Enter First Name" name="firstName" id="firstName" th:field="*{firstName}" required>
+	<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="alert alert-danger"></p>
+
 
     <label for="last-name"><b>Last Name</b></label>
     <input type="text" placeholder="Enter Last Name" name="lastName" id="lastName" required>
 
   	<label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}" required>
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class ="alert alert-danger"></p>
 
     <label for="psw-repeat"><b>Confirm Password</b></label>
     <input type="password" placeholder="Repeat Password" name="confirmPassword" id="confirmPassword" required>

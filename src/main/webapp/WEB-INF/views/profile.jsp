@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.List" import="com.demo.model.Employee"
-	import="com.demo.model.Address"%>
+	pageEncoding="UTF-8" import="java.util.List"
+	import="com.demo.model.Employee" import="com.demo.model.Address"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
@@ -13,10 +13,9 @@
 <%@ include file="header.jsp"%>
 <body>
 	<form action="ProfileServlet">
-		<a href="edit-employee-details.jsp" class="btn btn-success">Edit</a> <a
-			href="add-new-address-repeat-logic.html" class="btn btn-success">Add
-			New Address </a> <a href="homepage.jsp" class="btn btn-success">Home
-		</a>
+		<a href="edit-employee-details/${employee.empId}"
+			class="btn btn-success">Edit</a> <a href="homepage"
+			class="btn btn-success">Home </a>
 	</form>
 
 	<br>
@@ -27,41 +26,43 @@
 		<div class="container">
 			<hr>
 			<br>
-			<%
-					HttpSession httpSession = request.getSession();
-					Employee emp=(Employee) httpSession.getAttribute("empKeyForjsp");						
-						%>
 			<tr>
-				<td><b>Employee Id: </b><%= emp.getEmpId() %></td>
+				<td><b>Employee Id: </b>${employee.getEmpId()}</td>
 				<br />
 				<br />
-				<td><b>Name : </b><%= emp.getFirstName() %></td>
+				<td><b> First Name : </b> ${employee.getFirstName()}</td>
 				<br />
 				<br />
-				<td><b>Email : </b><%= emp.getEmail() %></td>
+				<td><b> Last Name : </b> ${employee.getLastName()}</td>
 				<br />
 				<br />
-				<td><b>DOB : </b><%= emp.getDob()  %></td>
+				<td><b>Mob No : </b> ${employee.getMobNo()}</td>
 				<br />
 				<br />
-				<td><b>Mob No : </b><%= emp.getMobNo() %></td>
+				<td><b>Email : </b> ${employee.getEmail()}</td>
 				<br />
 				<br />
-				<td><b>Hobbies : </b><%= emp.getHobbies()  %></td>
+				<td><b>DOB : </b> ${employee.getDob()}</td>
 				<br />
 				<br />
-				<td><b>Admin : </b><%= emp.getIsAdmin() %></td>
+
+				<td><b>Hobbies : </b> ${employee.getHobbies()}</td>
+				<br />
+				<br />
+				<td><b>Admin : </b> <c:choose>
+						<c:when test="${employee.getIsAdmin()==0}">No</c:when>
+						<c:otherwise>Yes</c:otherwise>
+					</c:choose></td>
 				<br />
 				<br />
 				<br />
 				<br />
 				<td></td>
-				<b>Password : </b>
+				<%-- <b>Password : </b>
 				<%
-						for(int i=0;i<emp.getPassword().length();i++){
-							%>*
-				<%}
-						 %></td>
+						for(int i=0;i<${emp.getPassword().length()};i++){
+					%>* <%}
+						 %></td> --%>
 				<br />
 				<br />
 
@@ -90,26 +91,38 @@
 
 				<tbody>
 
-					<%	
+					<%-- <%	
 						int count = 1;
 						List<Address> addressdata = (List<Address>) httpSession.getAttribute("addressDetailsKeyForJsp");
 						for (Address add : addressdata) {
-						%>
-					<tr>
-						<td><%= count++ %></td>
-						<td><%= add.getStreet() %></td>
-						<td><%= add.getCity() %></td>
-						<td><%= add.getState() %></td>
-						<td><%= add.getPinCode() %></td>
-						
-						<%-- 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+						%> --%>
+					<c:choose>
+						<c:when test="${address.size()<1 }">
+							<h3>No address found</h3>
+						</c:when>
+						<c:otherwise>
+							<%
+							int count = 1;
+							%>
+							<c:forEach var="i" begin="0" end="${address.size()-1}">
+
+								<tr>
+									<td><%=count++%></td>
+									<td>${address.get(i).getStreet()}</td>
+									<td>${address.get(i).getCity()}</td>
+									<td>${address.get(i).getState()}</td>
+									<td>${address.get(i).getPinCode()}</td>
+
+									<%-- 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="DeleteProjectServlet?id=<%=p.getProjectId()%>">Delete</a></td> --%>
-					</tr>
-					<%
+								</tr>
+								<%-- 						<%
 						}
-						%>
+						%> --%>
 
-
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 
 			</table>

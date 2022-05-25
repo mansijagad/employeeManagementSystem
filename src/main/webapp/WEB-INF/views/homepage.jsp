@@ -63,7 +63,7 @@ img {
 		response.sendRedirect("index.jsp");
 	}
 	%> --%>
-	<form action="/profilePage" method="post,get">
+	<form action="profilePage" method="post">
 		<ul>
 
 			<li style="float: left"><a href="profilePage">Profile </a></li>

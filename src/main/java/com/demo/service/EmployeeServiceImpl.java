@@ -56,9 +56,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Transactional
-	public Employee checkEmailExist(String email,String password) {
+	public Employee checkEmailExist(String email) {
 		// TODO Auto-generated method stub
-		return this.employeeDao.checkEmailExist(email,password);
+		return this.employeeDao.checkEmailExist(email);
 	}
 	public int getMaxEmpId() {
 		return this.employeeDao.getMaxEmpId();

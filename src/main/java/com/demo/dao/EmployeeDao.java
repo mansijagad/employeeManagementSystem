@@ -29,7 +29,7 @@ public interface EmployeeDao {
 	@Transactional
 	public void deleteEmp(int id);
 	
-	public Employee checkEmailExist(String email,String password);
+	public Employee checkEmailExist(String email);
 	
 	public int getMaxEmpId();
 }

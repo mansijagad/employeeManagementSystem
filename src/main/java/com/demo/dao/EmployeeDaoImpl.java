@@ -85,7 +85,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee checkEmailExist(String empEmail, String password) {
+	public Employee checkEmailExist(String empEmail) {
 		// TODO Auto-generated method stub
 
 		System.out.println(empEmail);
@@ -95,16 +95,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		System.out.println(emplist);
 		System.out.println("entered email is" + empEmail);
 		for (Employee e : emplist) {
-			System.out.println(e.getEmail());
-
-			System.out.println(empEmail.equals(e.getEmail()));
-			System.out.println();
 			if (empEmail.equals(e.getEmail())) {
 				System.out.println("emp id is " + e.getEmpId());
 				emp.setEmpId(e.getEmpId());
+				emp.setFirstName(e.getFirstName());
+				emp.setLastName(e.getLastName());
+				emp.setMobNo(e.getMobNo());
+				emp.setDob(e.getDob());
+				emp.setHobbies(e.getHobbies());
 				emp.setPassword(e.getPassword());
 				emp.setEmail(e.getEmail());
-
+				emp.setIsAdmin(e.getIsAdmin());
 				return emp;
 			}
 		}

@@ -21,7 +21,7 @@ public interface EmployeeService {
 	@Transactional
 	public void deleteEmpById(int id);
 	
-	public Employee checkEmailExist(String email,String password);
+	public Employee checkEmailExist(String email);
 	
 	public int getMaxEmpId();
 }
